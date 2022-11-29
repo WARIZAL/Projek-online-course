@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('class', function (Blueprint $table) {
-            $table->id('id_class');
+        Schema::create('kelas', function (Blueprint $table) {
+            $table->id('id_kelas');
             $table->foreignId('id_member');
             $table->foreignId('id_bidang');
-            $table->enum('jenis_class', ['free', 'premium', 'bootcamp']);
-            $table->double('harga_class');
+            $table->enum('jenis_kelas', ['free', 'premium', 'bootcamp']);
+            $table->double('harga_kelas');
             $table->integer('lama_course');
             $table->date('tgl_bayar');
             $table->date('tanggal_berakhir');
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::drop('class');
+        Schema::drop('kelas');
     }
 };

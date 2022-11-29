@@ -16,14 +16,14 @@ return new class extends Migration
         Schema::create('modul', function (Blueprint $table) {
             $table->id('id_modul');
             $table->foreignId('id_kategori_modul');
-            $table->foreignId('id_class');
+            $table->foreignId('id_kelas');
             $table->string('nama_modul', 50);
             $table->integer('jml_modul');
             $table->date('tgl_terbit');
             $table->string('penulis', 50);
             $table->timestamps();
             $table->foreign('id_kategori_modul')->references('id_kategori_modul')->on('kategori_modul')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreign('id_class')->references('id_class')->on('class')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('id_kelas')->references('id_kelas')->on('kelas')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 
