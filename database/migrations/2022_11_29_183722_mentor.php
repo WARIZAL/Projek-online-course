@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('id_user');
             $table->foreignId('id_bidang');
             $table->string('kode_mentor', 10);
-            $table->string('nama_member', 30);
+            $table->string('nama_mentor', 30);
             $table->date('tgl_lhr');
             $table->string('foto', 20);
             $table->enum('gender', ['laki-laki', 'perempuan']);
