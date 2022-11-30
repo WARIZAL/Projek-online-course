@@ -9,9 +9,10 @@ use Illuminate\Http\Request;
 
 class BidangController extends Controller
 {
-    public function GetAll()
+    public function GetAllBidang()
     {
         $bidang = DB::table('bidang')->get();
+        // dd($bidang);
         return view('admin.bidang', [
             'bidang' => $bidang,
             'title' => 'data bidang'
@@ -29,7 +30,7 @@ class BidangController extends Controller
             return redirect('bidang');
         }
     }
-    public function UpdateById(Request $request)
+    public function UpdateByIdBidang(Request $request)
     {
         $data = array(
             'nama_bidang' => $request->post('nama_bidang')
@@ -37,7 +38,7 @@ class BidangController extends Controller
         DB::table('bidang')->where('id_bidang', '=', $request->post('id_bidang'))->update($data);
         return redirect('bidang');
     }
-    public function DeleteById($id)
+    public function DeleteByIdBidang($id)
     {
         DB::table('bidang')->where('id_bidang', '=', $id)->delete();
         return redirect('bidang');

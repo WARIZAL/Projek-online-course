@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class KtgrModulController extends Controller
 {
-    public function GetAll()
+    public function GetAllKtgrModul()
     {
         $data = DB::table('kategori_modul')->get();
         return view('admin.kategoriModul', [
@@ -16,7 +16,7 @@ class KtgrModulController extends Controller
             'title' => 'data kategori modul'
         ]);
     }
-    public function AddKategori(Request $request)
+    public function AddKtgrModul(Request $request)
     {
         $validasi = $request->validate([
             'jenis_modul' => 'required'
@@ -28,7 +28,7 @@ class KtgrModulController extends Controller
             return redirect('kategoriModul');
         }
     }
-    public function UpdateById(Request $request)
+    public function UpdateByIdKtgrModul(Request $request)
     {
         $data = array(
             'jenis_modul' => $request->post('jenis_modul')
@@ -36,7 +36,7 @@ class KtgrModulController extends Controller
         DB::table('kategori_modul')->where('id_kategori_modul', '=', $request->post('id_kategori_modul'))->update($data);
         return redirect('kategoriModul');
     }
-    public function DeleteById($id)
+    public function DeleteByIdKtgrModul($id)
     {
         DB::table('kategori_modul')->where('id_kategori_modul', '=', $id)->delete();
         return redirect('kategoriModul');

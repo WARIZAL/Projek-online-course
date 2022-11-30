@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class ModulController extends Controller
 {
-    public function GetAll()
+    public function GetAllModul()
     {
         $data = DB::table('kategori_modul')->get();
         $join = DB::table('modul')
@@ -43,7 +43,7 @@ class ModulController extends Controller
             return redirect('modul');
         }
     }
-    public function UpdateById(Request $request)
+    public function UpdateModulById(Request $request)
     {
         $data = array(
             'id_kategori_modul' => $request->post('id_kategori_modul'),
@@ -56,7 +56,7 @@ class ModulController extends Controller
         DB::table('modul')->where('id_modul', '=', $request->post('id_modul'))->update($data);
         return redirect('modul');
     }
-    public function DeleteById($id)
+    public function DeleteModulById($id)
     {
         DB::table('modul')->where('id_modul', '=', $id)->delete();
         return redirect('modul');
