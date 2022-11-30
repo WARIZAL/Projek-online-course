@@ -2,26 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mentor;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class MemberController extends Controller
+class MentorController extends Controller
 {
-    public function GetAllMember()
+    public function GetAllMentor()
     {
         $dataUser = DB::table('user')->get();
-        $dataMember = DB::table('member')->join('user', 'user.id_user', '=', 'member.id_user')->get();
-        return view('admin.member', [
-            'member' => $dataMember,
-            'title' => 'data member'
+        $dataMentor = DB::table('mentor')->join('user', 'user.id_user', '=', 'mentor.id_user')->get();
+        return view('admin.mentor', [
+            'mentor' => $dataMentor,
+            'title' => 'data mentor'
         ]);
     }
-    public function AddMember(Request $request)
+    public function AddMentor(Request $request)
     {
         $validation = $request->validate([
             'id_user' => 'required',
-            'kode_member' => 'required',
-            'nama_member' => 'required',
+            'kode_mentor' => 'required',
+            'nama_mentor' => 'required',
             'tgl_lhr' => 'required',
             'foto' => 'required',
             'gender' => 'required',
@@ -30,10 +32,10 @@ class MemberController extends Controller
             'telepon' => 'required'
         ]);
         if ($validation == true) {
-            $data = DB::table('member')->insert([
+            $data = DB::table('mentor')->insert([
                 'id_user' => $request->id_user,
-                'kode_member' => $request->kode_member,
-                'nama_member' => $request->nama_member,
+                'kode_mentor' => $request->kode_mentor,
+                'nama_mentor' => $request->nama_mentor,
                 'tgl_lhr' => $request->tgl_lhr,
                 'foto' => $request->foto,
                 'gender' => $request->gender,
@@ -41,15 +43,15 @@ class MemberController extends Controller
                 'email' => $request->email,
                 'telepon' => $request->telepon
             ]);
-            return redirect('member');
+            return redirect('Mentor');
         }
     }
-    public function UpdateMemberById(Request $request)
+    public function UpdateMentorById(Request $request)
     {
         $data = array([
             'id_user' => $request->post('id_user'),
-            'kode_member' => $request->post('kode_member'),
-            'nama_member' => $request->post('nama_member'),
+            'kode_mentor' => $request->post('kode_mentor'),
+            'nama_mentor' => $request->post('nama_mentor'),
             'tgl_lhr' => $request->post('tgl_lhr'),
             'foto' => $request->post('foto'),
             'gender' => $request->post('gender'),
@@ -57,12 +59,12 @@ class MemberController extends Controller
             'email' => $request->post('email'),
             'telepon' => $request->post('telepon')
         ]);
-        DB::table('member')->where('id_member', '=', $request->post('id_member'))->update($data);
-        return redirect('member');
+        DB::table('mentor')->where('id_mentor', '=', $request->post('id_mentor'))->update($data);
+        return redirect('mentor');
     }
-    public function DeleteMemberById($id)
+    public function DeleteMentorById($id)
     {
-        DB::table('member')->where('id_member', '=', $id)->delete();
-        return redirect('member');
+        DB::table('mentor')->where('id_mentor', '=', $id)->delete();
+        return redirect('mentor');
     }
 }
