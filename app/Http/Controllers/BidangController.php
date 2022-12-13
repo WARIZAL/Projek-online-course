@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bidang;
+use App\Models\Lembaga;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
@@ -11,9 +12,10 @@ class BidangController extends Controller
 {
     public function GetAllBidang()
     {
+        $data = DB::table('lembaga')->get();
         $bidang = DB::table('bidang')->get();
-        // dd($bidang);
         return view('admin.bidang', [
+            'instansi' => $data,
             'bidang' => $bidang,
             'title' => 'data bidang'
         ]);
@@ -35,6 +37,7 @@ class BidangController extends Controller
         $data = array(
             'nama_bidang' => $request->post('nama_bidang')
         );
+        // dd($data);
         DB::table('bidang')->where('id_bidang', '=', $request->post('id_bidang'))->update($data);
         return redirect('bidang');
     }

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Member extends Model
 {
     use HasFactory;
+    protected $primarykey = 'id_member';
     protected $fillable = [
         'id_user',
         'kode_member',
