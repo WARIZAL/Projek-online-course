@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Modul extends Model
 {
     use HasFactory;
+    protected $table = 'modul';
+    protected $primaryKey = 'id_modul';
     protected $fillable = [
         'id_kategori_modul',
         'id_kelas',
@@ -18,5 +20,5 @@ class Modul extends Model
         'created_at',
         'updated_at'
     ];
-    protected $timestamps = true;
+    public $timestamps = true;
 }

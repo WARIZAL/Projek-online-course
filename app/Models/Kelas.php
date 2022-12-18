@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Kelas extends Model
 {
     use HasFactory;
+    protected $table = 'kelas';
+    protected $primaryKey = 'id_kelas';
     protected $fillable = [
         'id_member',
         'id_bidang',
@@ -19,5 +21,5 @@ class Kelas extends Model
         'created_at',
         'updated_at'
     ];
-    protected $timestamps = true;
+    public $timestamps = true;
 }

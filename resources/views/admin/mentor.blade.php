@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
                     <h3>Mentor</h3>
-                    <p class="text-subtitle text-muted">A sortable, searchable, paginated table without dependencies thanks to simple-datatables</p>
+                    <p class="text-subtitle text-muted">Selamat datang kembali {{Auth::user()->username}}</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -125,27 +125,28 @@
                                     </select>
                                 </fieldset>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6 mb-3">
                                 <h6>Kode mentor</h6>
                                 <input class="form-control" type="text" name="kode_mentor" placeholder="kode mentor" aria-label="default input example">
                             </div>
-                        </div>
-                        <!-- id_user	kode_member	nama_member	tgl_lhr	foto	gender	alamat	email	telepon	 -->
-                        <div class="row">
                             <div class="col-md-6 mb-3">
                                 <h6>Nama mentor</h6>
                                 <input class="form-control" type="text" name="nama_mentor" placeholder="nama mentor" aria-label="default input example">
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6 mb-3">
                                 <h6>Tgl lahir</h6>
                                 <input class="form-control" type="date" name="tgl_lhr" placeholder="tanggal lahir" aria-label="default input example">
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-6 mb-3">
                                 <h6>Foto</h6>
                                 <input class="form-control" type="file" name="foto" aria-label="default input example">
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6 mb-3">
                                 <h6>Gender</h6>
                                 <div class="d-flex justify-content-around mt-3">
@@ -164,19 +165,17 @@
 
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-6 mb-3">
                                 <h6>Alamat</h6>
                                 <input class="form-control" type="text" name="alamat" placeholder="alamat" aria-label="default input example">
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6 mb-3">
                                 <h6>Email</h6>
                                 <input class="form-control" type="email" name="email" placeholder="email@gmail.com" aria-label="default input example">
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 mb-3">
+                            <div class="col-md-6 mb-3">
                                 <h6>Telepon</h6>
                                 <input class="form-control" type="text" name="telepon" placeholder="telepon" aria-label="default input example">
                             </div>

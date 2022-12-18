@@ -4,17 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Models\Lembaga;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 
 class LembagaController extends Controller
 {
     public function GetLembaga()
     {
-        $data = DB::table('lembaga')->get();
-        return view('admin.instansi', [
-            'instansi' => $data,
-            'title' => 'data instansi'
-        ]);
+        $data = Lembaga::all();
+        if (Auth::user()->role == 'admin') {
+            return view('admin.instansi', [
+                'instansi' => $data,
+                'title' => 'data instansi'
+            ]);
+        } else {
+            print('akses di tolak');
+        }
     }
     public function AddLembaga(Request $request)
     {
@@ -23,14 +29,14 @@ class LembagaController extends Controller
             'logo' => 'required|image|mimes:png,jpg,jpeg|max:1024',
             'tentang' => 'required'
         ]);
-        // dd($validate);
         $logoName = time() . '.' . $request->logo->extension();
         $request->logo->move(public_path('logo'), $logoName);
-        DB::table('lembaga')->insert([
+        $datas = new Lembaga([
             'nama' => $request->nama,
             'logo' => $logoName,
             'tentang' => $request->tentang,
         ]);
+        $datas->save();
         return redirect('instansi');
     }
     public function UpdateById(Request $request)
@@ -42,17 +48,17 @@ class LembagaController extends Controller
         ]);
         $logoName = time() . '.' . $request->logo->extension();
         $request->logo->move(public_path('logo'), $logoName);
-        $data = array(
+        $edit = array(
             'nama' => $request->post('nama'),
             'logo' => $logoName,
             'tentang' => $request->post('tentang'),
         );
-        DB::table('lembaga')->where('id_lembaga', '=', $request->post('id_lembaga'))->update($data);
+        Lembaga::where('id_lembaga', '=', $request->post('id_lembaga'))->update($edit);
         return redirect('instansi');
     }
     public function DeleteById($id)
     {
-        DB::table('lembaga')->where('id_lembaga', '=', $id)->delete();
+        Lembaga::where('id_lembaga', '=', $id)->delete();
         return redirect('instansi');
     }
 }

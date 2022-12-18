@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - Mazer Admin Dashboard</title>
+    <title>{{$title ?? ""}}</title>
     <link rel="stylesheet" href="{{asset('assets')}}/css/main/app.css" />
     <link rel="stylesheet" href="{{asset('assets')}}/css/pages/auth.css" />
     <link rel="shortcut icon" href="{{asset('assets')}}/images/logo/favicon.svg" type="image/x-icon" />
@@ -17,7 +17,20 @@
             <div class="row align-items-center">
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="index.html"> <img src="{{asset('assetshome')}}/img/logo.png" alt="logo"> </a>
+                        <a class="navbar-brand" href="index.html">
+                            @foreach($lembaga as $l)
+                            <div class="overflow-hidden">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <img src="/logo/{{$l->logo}}" alt="" width="35" height="45" class="rounded-circle">
+                                    </div>
+                                    <div class="col-4">
+                                        <h3>{{$l->nama}}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
@@ -36,20 +49,14 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="blog">Blog</a>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Transaction
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="login">Login</a>
-                                        <a class="dropdown-item" href="register">Register</a>
-                                    </div>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="login">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="register">Register</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="kontak">Contact</a>
-                                </li>
-                                <li class="d-none d-lg-block">
-                                    <a class="btn_1" href="#">Get a Quote</a>
                                 </li>
                             </ul>
                         </div>

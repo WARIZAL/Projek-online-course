@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
                     <h3>Data Bidang</h3>
-                    <p class="text-subtitle text-muted">A sortable, searchable, paginated table without dependencies thanks to simple-datatables</p>
+                    <p class="text-subtitle text-muted">Selamat datang kembali {{Auth::user()->username}}</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -87,6 +87,7 @@
                         @csrf
                         <div class="row">
                             <div class="col-12">
+                                <h6>Nama bidang</h6>
                                 <input class="form-control" type="text" name="nama_bidang" placeholder="Default input" aria-label="default input example">
                             </div>
                         </div>
@@ -115,6 +116,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <input type="hidden" class="form-control" name="id_bidang" value="{{$valId->id_bidang}}">
+                                <h6>Nama bidang</h6>
                                 <input class="form-control" type="text" name="nama_bidang" value="{{$valId->nama_bidang}}" aria-label="default input example">
                             </div>
                         </div>

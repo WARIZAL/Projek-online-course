@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Member extends Model
 {
     use HasFactory;
+    protected $table = 'member';
     protected $primarykey = 'id_member';
     protected $fillable = [
         'id_user',
@@ -22,5 +23,5 @@ class Member extends Model
         'created_at',
         'updated_at'
     ];
-    protected $timestamps = true;
+    public $timestamps = true;
 }

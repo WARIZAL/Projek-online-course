@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
                     <h3>Modul</h3>
-                    <p class="text-subtitle text-muted">A sortable, searchable, paginated table without dependencies thanks to simple-datatables</p>
+                    <p class="text-subtitle text-muted">Selamat datang kembali {{Auth::user()->username}}</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -59,7 +59,7 @@
                                     <td>{{$val->penulis}}</td>
                                     <td>
                                         <div class="d-flex justify-content-center">
-                                            <!-- <div class="d-flex"> -->
+                                            @if(Auth::user()->role=='admin')
                                             <div class="col-md-4">
                                                 <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalUpdate{{$val->id_modul}}">
                                                     <i class="fas fa-edit"></i>
@@ -70,7 +70,13 @@
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </div>
-                                            <!-- </div> -->
+                                            @elseif(Auth::user()->role=='mentor')
+                                            <div class="col-md-4">
+                                                <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalUpdate{{$val->id_modul}}">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                            </div>
+                                            @endif
                                         </div>
                                     </td>
                                 </tr>
@@ -167,6 +173,7 @@
                             <div class="col-md-6 mb-3">
                                 <h6>Kategori Modul</h6>
                                 <fieldset class="form-group">
+                                    <input type="hidden" class="form-control" name="id_modul" value="{{$row->id_modul}}">
                                     <select name="id_kategori_modul" id="basicSelect" class="form-select">
                                         @foreach($kategori as $valId)
                                         <option value="{{$valId->id_kategori_modul}}">{{$valId->jenis_modul}}</option>

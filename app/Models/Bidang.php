@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Bidang extends Model
 {
     use HasFactory;
+    protected $table = 'bidang';
+    protected $primaryKey = 'id_bidang';
     protected $fillable = ['nama_bidang',    'created_at',    'updated_at'];
-    protected $timestamps = true;
+    public $timestamps = false;
 }

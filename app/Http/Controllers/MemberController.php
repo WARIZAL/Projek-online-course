@@ -3,22 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lembaga;
+use App\Models\Member;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class MemberController extends Controller
 {
     public function GetAllMember()
     {
-        $data = DB::table('lembaga')->get();
-        $dataUser = DB::table('user')->get();
+        $data = Lembaga::all();
+        $dataUser = User::all();
         $dataMember = DB::table('member')->join('user', 'user.id_user', '=', 'member.id_user')->get();
-        return view('admin.member', [
-            'instansi' => $data,
-            'users' => $dataUser,
-            'member' => $dataMember,
-            'title' => 'data member'
-        ]);
+        if (Auth::user()->role == 'admin') {
+            return view('admin.member', [
+                'instansi' => $data,
+                'users' => $dataUser,
+                'member' => $dataMember,
+                'title' => 'data member'
+            ]);
+        } else {
+            print('akses di tolak');
+        }
     }
     public function AddMember(Request $request)
     {
@@ -39,7 +46,7 @@ class MemberController extends Controller
         $request->foto->move(public_path('foto'), $imageName);
 
         if ($validation == true) {
-            $data = DB::table('member')->insert([
+            $data = new Member([
                 'id_user' => $request->id_user,
                 'kode_member' => $request->kode_member,
                 'nama_member' => $request->nama_member,
@@ -50,6 +57,7 @@ class MemberController extends Controller
                 'email' => $request->email,
                 'telepon' => $request->telepon
             ]);
+            $data->save();
             return redirect('member');
         }
     }
@@ -82,12 +90,12 @@ class MemberController extends Controller
             'email' => $request->post('email'),
             'telepon' => $request->post('telepon')
         );
-        DB::table('member')->where('id_member', '=', $request->post('id_member'))->update($data);
+        Member::where('id_member', '=', $request->post('id_member'))->update($data);
         return redirect('member');
     }
     public function DeleteMemberById($id)
     {
-        DB::table('member')->where('id_member', '=', $id)->delete();
+        Member::where('id_member', $id)->delete();
         return redirect('member');
     }
 }

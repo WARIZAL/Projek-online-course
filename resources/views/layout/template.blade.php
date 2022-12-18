@@ -61,6 +61,7 @@
                     </div>
                 </div>
                 <div class="sidebar-menu">
+                    @if(Auth::user()->role=='admin')
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
 
@@ -120,16 +121,68 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class='sidebar-link'>
+                            <a href="logout" class='sidebar-link'>
                                 <i class="fas fa-sign-out-alt"></i>
                                 <span>Logout</span>
                             </a>
                         </li>
                     </ul>
+                    @elseif(Auth::user()->role=='mentor')
+                    <ul class="menu">
+                        <li class="sidebar-title">Menu</li>
+
+                        <!-- <li class="sidebar-item active "> -->
+                        <li class="sidebar-item">
+                            <a href="dashboard" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="ktgrModul" class='sidebar-link'>
+                                <i class="fas fa-book"></i>
+                                <span>Kategori modul</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="modul" class='sidebar-link'>
+                                <i class="fas fa-swatchbook"></i>
+                                <span>Moduls</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="logout" class='sidebar-link'>
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                    @elseif(Auth::user()->role=='member')
+                    <ul class="menu">
+                        <li class="sidebar-item">
+                            <a href="logout" class='sidebar-link'>
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                    @endif
                 </div>
             </div>
         </div>
-        @yield('content')
+        <div id="main">
+            @yield('content')
+            <footer>
+                <div class="footer clearfix mb-0 text-muted">
+                    <div class="float-start">
+                        <p><?= date('Y') ?> &copy; Online Course</p>
+                    </div>
+                    <div class="float-end">
+                        <p>Devloper <span class="text-danger"></span> by <a href="#">Bahri & Ilwi</a></p>
+                    </div>
+                </div>
+            </footer>
+        </div>
     </div>
     <script src="{{asset('assets')}}/js/bootstrap.js"></script>
     <script src="{{asset('assets')}}/js/app.js"></script>

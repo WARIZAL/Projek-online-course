@@ -7,18 +7,23 @@ use App\Models\Lembaga;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BidangController extends Controller
 {
     public function GetAllBidang()
     {
-        $data = DB::table('lembaga')->get();
-        $bidang = DB::table('bidang')->get();
-        return view('admin.bidang', [
-            'instansi' => $data,
-            'bidang' => $bidang,
-            'title' => 'data bidang'
-        ]);
+        $data = Lembaga::all();
+        $bidang = Bidang::all();
+        if (Auth::user()->role == 'admin') {
+            return view('admin.bidang', [
+                'instansi' => $data,
+                'bidang' => $bidang,
+                'title' => 'data bidang'
+            ]);
+        } else {
+            print('akses di tolak');
+        }
     }
     public function AddBidang(Request $request)
     {
@@ -26,24 +31,24 @@ class BidangController extends Controller
             'nama_bidang' => 'required'
         ]);
         if ($validasi == true) {
-            DB::table('bidang')->insert([
+            $add = new Bidang([
                 'nama_bidang' => $request->nama_bidang
             ]);
+            $add->save();
             return redirect('bidang');
         }
     }
     public function UpdateByIdBidang(Request $request)
     {
-        $data = array(
+        $update = array(
             'nama_bidang' => $request->post('nama_bidang')
         );
-        // dd($data);
-        DB::table('bidang')->where('id_bidang', '=', $request->post('id_bidang'))->update($data);
+        Bidang::where('id_bidang', '=', $request->post('id_bidang'))->update($update);
         return redirect('bidang');
     }
     public function DeleteByIdBidang($id)
     {
-        DB::table('bidang')->where('id_bidang', '=', $id)->delete();
+        Bidang::where('id_bidang', '=', $id)->delete();
         return redirect('bidang');
     }
 }

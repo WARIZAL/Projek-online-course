@@ -1,24 +1,39 @@
- <!-- jquery -->
- <script src="{{asset('assetshome')}}/js/jquery-1.12.1.min.js"></script>
- <!-- popper js -->
- <script src="{{asset('assetshome')}}/js/popper.min.js"></script>
- <!-- bootstrap js -->
- <script src="{{asset('assetshome')}}/js/bootstrap.min.js"></script>
- <!-- easing js -->
- <script src="{{asset('assetshome')}}/js/jquery.magnific-popup.js"></script>
- <!-- swiper js -->
- <script src="{{asset('assetshome')}}/js/swiper.min.js"></script>
- <!-- swiper js -->
- <script src="{{asset('assetshome')}}/js/masonry.pkgd.js"></script>
- <!-- particles js -->
- <script src="{{asset('assetshome')}}/js/owl.carousel.min.js"></script>
- <script src="{{asset('assetshome')}}/js/jquery.nice-select.min.js"></script>
- <!-- swiper js -->
- <script src="{{asset('assetshome')}}/js/slick.min.js"></script>
- <script src="{{asset('assetshome')}}/js/jquery.counterup.min.js"></script>
- <script src="{{asset('assetshome')}}/js/waypoints.min.js"></script>
- <!-- custom js -->
- <script src="{{asset('assetshome')}}/js/custom.js"></script>
- </body>
+<footer class="mt-5">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="copyright_part_text text-center">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <p class="footer-text m-0">
+                                Copyright &copy;<script>
+                                    document.write(new Date().getFullYear());
+                                </script>
+                                All rights reserved | Devloper <span class="text-danger"></span> by <a href="#">Bahri & Ilwi</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+<script src="{{asset('assets')}}/js/bootstrap.js"></script>
+<script src="{{asset('assets')}}/js/app.js"></script>
 
- </html>
+<!-- Need: Apexcharts -->
+<script src="{{asset('assets')}}/extensions/apexcharts/apexcharts.min.js"></script>
+<script src="{{asset('assets')}}/js/pages/dashboard.js"></script>
+
+<!-- load datatable -->
+<!-- <script src="{{asset('assets')}}/extensions/simple-datatables/umd/simple-datatables.js"></script>
+    <script src="{{asset('assets')}}/js/pages/simple-datatables.js"></script> -->
+
+<!-- load datatable jquery -->
+<script src="{{asset('assets')}}/extensions/jquery/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
+<script src="{{asset('assets')}}/js/pages/datatables.js"></script>
+</body>
+
+</html>

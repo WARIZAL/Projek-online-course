@@ -3,28 +3,34 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bidang;
+use App\Models\Lembaga;
 use App\Models\Mentor;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class MentorController extends Controller
 {
     public function GetAllMentor()
     {
-        $data = DB::table('lembaga')->get();
-        $dataUser = DB::table('user')->get();
-        $dataBidang = DB::table('bidang')->get();
+        $data = Lembaga::all();
+        $dataUser = User::all();
+        $dataBidang = Bidang::all();
         $dataMentor = DB::table('mentor')->join('user', 'user.id_user', '=', 'mentor.id_user')
             ->join('bidang', 'bidang.id_bidang', '=', 'mentor.id_bidang')
             ->get();
-        return view('admin.mentor', [
-            'instansi' => $data,
-            'users' => $dataUser,
-            'bidang' => $dataBidang,
-            'mentor' => $dataMentor,
-            'title' => 'data mentor'
-        ]);
+        if (Auth::user()->role == 'admin') {
+            return view('admin.mentor', [
+                'instansi' => $data,
+                'users' => $dataUser,
+                'bidang' => $dataBidang,
+                'mentor' => $dataMentor,
+                'title' => 'data mentor'
+            ]);
+        } else {
+            print('akses di tolak');
+        }
     }
     public function AddMentor(Request $request)
     {
@@ -45,7 +51,7 @@ class MentorController extends Controller
         $request->foto->move(public_path('foto'), $imageName);
 
         if ($validation == true) {
-            DB::table('mentor')->insert([
+            $add = new Mentor([
                 'id_user' => $request->id_user,
                 'id_bidang' => $request->id_bidang,
                 'kode_mentor' => $request->kode_mentor,
@@ -57,6 +63,7 @@ class MentorController extends Controller
                 'email' => $request->email,
                 'telepon' => $request->telepon
             ]);
+            $add->save();
             return redirect('mentor');
         }
     }
@@ -89,12 +96,12 @@ class MentorController extends Controller
             'email' => $request->post('email'),
             'telepon' => $request->post('telepon')
         );
-        DB::table('mentor')->where('id_mentor', '=', $request->post('id_mentor'))->update($data);
+        Mentor::where('id_mentor', '=', $request->post('id_mentor'))->update($data);
         return redirect('mentor');
     }
     public function DeleteMentorById($id)
     {
-        DB::table('mentor')->where('id_mentor', '=', $id)->delete();
+        Mentor::where('id_mentor', '=', $id)->delete();
         return redirect('mentor');
     }
 }

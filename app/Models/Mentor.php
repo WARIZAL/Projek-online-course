@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Mentor extends Model
 {
     use HasFactory;
+    protected $table = 'mentor';
+    protected $primaryKey = 'id_mentor';
     protected $fillable = [
         'id_user',
         'id_bidang',
@@ -22,5 +24,5 @@ class Mentor extends Model
         'created_at',
         'updated_at'
     ];
-    protected $timestamps = true;
+    public $timestamps = true;
 }

@@ -1,6 +1,4 @@
-@extends('layout.app')
-@section('content')
-
+@include('layout.header')
 <!-- breadcrumb start-->
 <section class="breadcrumb breadcrumb_bg">
     <div class="container">
@@ -338,4 +336,4 @@
 </section>
 <!--================Blog Area =================-->
 
-@endsection
+@include('layout.footer')

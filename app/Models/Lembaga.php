@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Lembaga extends Model
 {
     use HasFactory;
+    protected $table = 'lembaga';
+    protected $primaryKey = 'id_lembaga';
     protected $fillable = ['nama',    'logo',    'tentang', 'created_at', 'updated_at'];
-    protected $timestamps = true;
+    public $timestamps = false;
 }

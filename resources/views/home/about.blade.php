@@ -1,6 +1,4 @@
-@extends('layout.app')
-@section('content')
-
+@include('layout.header')
 <!-- breadcrumb start-->
 <section class="breadcrumb breadcrumb_bg">
     <div class="container">
@@ -10,6 +8,11 @@
                     <div class="breadcrumb_iner_item">
                         <h2>About Us</h2>
                         <p>Home<span>/</span>About Us</p>
+                        @foreach($lembaga as $l)
+                        <div class="overflow-hidden">
+                            <img src="/logo/{{$l->logo}}" alt="" width="300" height="300" class="rounded-circle">
+                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -22,44 +25,36 @@
 <section class="feature_part single_feature_padding">
     <div class="container">
         <div class="row">
+            @foreach($lembaga as $l)
             <div class="col-sm-6 col-xl-3 align-self-center">
                 <div class="single_feature_text ">
-                    <h2>Awesome <br> Feature</h2>
-                    <p>Set have great you male grass yielding an yielding first their you're
-                        have called the abundantly fruit were man </p>
+                    <h2>{{$l->nama}}</h2>
+                    <p>{{$l->tentang}}</p>
                     <a href="#" class="btn_1">Read More</a>
                 </div>
             </div>
-            <div class="col-sm-6 col-xl-3">
-                <div class="single_feature">
-                    <div class="single_feature_part">
-                        <span class="single_feature_icon"><i class="ti-layers"></i></span>
-                        <h4>Better Future</h4>
-                        <p>Set have great you male grasses yielding yielding first their to
-                            called deep abundantly Set have great you male</p>
-                    </div>
+            <div class="col-sm-6 col-xl-3 align-self-center">
+                <div class="single_feature_text ">
+                    <h2>{{$l->nama}}</h2>
+                    <p>{{$l->tentang}}</p>
+                    <a href="#" class="btn_1">Read More</a>
                 </div>
             </div>
-            <div class="col-sm-6 col-xl-3">
-                <div class="single_feature">
-                    <div class="single_feature_part">
-                        <span class="single_feature_icon"><i class="ti-new-window"></i></span>
-                        <h4>Qualified Trainers</h4>
-                        <p>Set have great you male grasses yielding yielding first their to called
-                            deep abundantly Set have great you male</p>
-                    </div>
+            <div class="col-sm-6 col-xl-3 align-self-center">
+                <div class="single_feature_text ">
+                    <h2>{{$l->nama}}</h2>
+                    <p>{{$l->tentang}}</p>
+                    <a href="#" class="btn_1">Read More</a>
                 </div>
             </div>
-            <div class="col-sm-6 col-xl-3">
-                <div class="single_feature">
-                    <div class="single_feature_part single_feature_part_2">
-                        <span class="single_service_icon style_icon"><i class="ti-light-bulb"></i></span>
-                        <h4>Job Oppurtunity</h4>
-                        <p>Set have great you male grasses yielding yielding first their to called deep
-                            abundantly Set have great you male</p>
-                    </div>
+            <div class="col-sm-6 col-xl-3 align-self-center">
+                <div class="single_feature_text ">
+                    <h2>{{$l->nama}}</h2>
+                    <p>{{$l->tentang}}</p>
+                    <a href="#" class="btn_1">Read More</a>
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -247,5 +242,4 @@
 </section>
 <!--::blog_part end::-->
 
-
-@endsection
+@include('layout.footer')
