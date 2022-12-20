@@ -26,6 +26,9 @@
                                         </div>
                                         <div class="col-12 d-flex justify-content-center mx-auto mt-2">
                                             <div class="col-6 ml-4 mx-auto">
+                                                <a href="/login" class="btn btn-danger me-1 mb-1">Cancel</a>
+                                            </div>
+                                            <div class="col-6 ml-4 mx-auto">
                                                 <button type="submit" class="btn btn-primary me-1 mb-1">Send reset password</button>
                                             </div>
                                         </div>

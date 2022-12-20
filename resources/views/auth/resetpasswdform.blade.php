@@ -49,10 +49,10 @@
                                         </div>
                                         <div class="col-12 d-flex justify-content-center mx-auto">
                                             <div class="col-3 mr-4 mx-auto">
-                                                <a href="login" class="btn btn-warning">Login</a>
+                                                <a href="login" class="btn btn-danger">Cancel</a>
                                             </div>
                                             <div class="col-3 ml-4 mx-auto">
-                                                <button type="submit" class="btn btn-primary me-1 mb-1">Register</button>
+                                                <button type="submit" class="btn btn-primary me-1 mb-1">Reset</button>
                                             </div>
                                         </div>
                                     </div>

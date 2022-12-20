@@ -53,13 +53,12 @@ class ResetPasswordController extends Controller
 
     public function SendResetForm(Request $request)
     {
-        $data = $request->validate([
+        $request->validate([
             'email' => 'required|email|exists:user',
             'token' => 'required',
             'password' => 'required|string|min:6|confirmed',
             'password_confirmation' => 'required'
         ]);
-        // dd($data);
         $updatePassword = DB::table('reset_password')
             ->where([
                 'email' => $request->email,
