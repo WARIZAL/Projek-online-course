@@ -6,7 +6,7 @@
                 <div class="card-header">
                     <h4 class="card-title">Register akun</h4>
                 </div>
-                <form action="createAkun" method="post">
+                <form action="/resetpasswdform" method="POST">
                     @csrf
                     <div class="card-content">
                         <div class="card-body">
@@ -15,20 +15,10 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group has-icon-left">
-                                                <label for="first-name-icon">Username</label>
-                                                <div class="position-relative">
-                                                    <input class="form-control" type="text" name="username" placeholder="Username" id="first-name-icon" autofocus>
-                                                    <div class="form-control-icon">
-                                                        <i class="bi bi-person"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group has-icon-left">
                                                 <label for="first-name-icon">Email</label>
                                                 <div class="position-relative">
                                                     <input class="form-control" type="email" name="email" placeholder="email@gmail.com" id="first-name-icon">
+                                                    <input type="hidden" name="token" value="{{ $token }}">
                                                     <div class="form-control-icon">
                                                         <i class="bi bi-envelope"></i>
                                                     </div>
@@ -40,6 +30,17 @@
                                                 <label for="email-id-icon">Password</label>
                                                 <div class="position-relative">
                                                     <input class="form-control" type="password" name="password" placeholder="password" id="password-id-icon">
+                                                    <div class="form-control-icon">
+                                                        <i class="bi bi-lock"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group has-icon-left">
+                                                <label for="email-id-icon">Password confirmation</label>
+                                                <div class="position-relative">
+                                                    <input class="form-control" type="password" name="password_confirmation" placeholder="password_confirmation" id="password-id-icon">
                                                     <div class="form-control-icon">
                                                         <i class="bi bi-lock"></i>
                                                     </div>

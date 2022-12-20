@@ -39,14 +39,16 @@ class UserController extends Controller
     {
         $request->validate([
             'username' => 'required',
+            'email' => 'required|email|unique:user',
             'password' => 'required|min:6',
-            'role' => 'required'
+            // 'role' => 'required'
         ]);
 
         $user = new User([
             'username' => $request->username,
+            'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => $request->role,
+            // 'role' => $request->role,
         ]);
         $user->save();
         return redirect('login')->with('success', 'Registration success. Please login!');
@@ -62,10 +64,10 @@ class UserController extends Controller
     public function LoginAuth(Request $request)
     {
         $request->validate([
-            'username' => 'required',
+            'email' => 'required',
             'password' => 'required',
         ]);
-        if (Auth::attempt($request->only("username", "password"))) {
+        if (Auth::attempt($request->only("email", "password"))) {
             if (Auth::user()->role == 'admin') {
                 return redirect()->route("dashboard");
             } elseif (Auth::user()->role == 'mentor') {
@@ -78,7 +80,7 @@ class UserController extends Controller
         }
 
         return back()->withErrors([
-            'password' => 'Wrong username or password',
+            'password' => 'Wrong email or password',
         ]);
     }
     public function UpdateByIdUser(Request $request)

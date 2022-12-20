@@ -172,13 +172,23 @@
         </div>
         <div id="main">
             @yield('content')
-            <footer>
-                <div class="footer clearfix mb-0 text-muted">
-                    <div class="float-start">
-                        <p><?= date('Y') ?> &copy; Online Course</p>
-                    </div>
-                    <div class="float-end">
-                        <p>Devloper <span class="text-danger"></span> by <a href="#">Bahri & Ilwi</a></p>
+            <footer class="mt-5">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="copyright_part_text text-center">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <p class="footer-text m-0">
+                                            Copyright &copy;<script>
+                                                document.write(new Date().getFullYear());
+                                            </script>
+                                            All rights reserved | Devloper <span class="text-danger"></span> by <a href="#">Bahri & Ilwi</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </footer>

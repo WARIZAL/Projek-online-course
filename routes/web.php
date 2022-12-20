@@ -9,7 +9,9 @@ use App\Http\Controllers\LembagaController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MentorController;
 use App\Http\Controllers\ModulController;
+use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\UserController;
+use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -29,12 +31,20 @@ Route::get('/course', [HomeController::class, 'course'])->name('course');
 Route::get('/kontak', [HomeController::class, 'kontak'])->name('kontak');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 // });
+
+
 Route::name('auth')->group(function () {
     Route::get('/register', [UserController::class, 'GetRegister'])->name('GetRegister');
     Route::post('/createAkun', [UserController::class, 'CreateAkun'])->name('CreateAkun');
     Route::get('/login', [UserController::class, 'login'])->name('login');
     Route::post('/loginAuth', [UserController::class, 'LoginAuth'])->name('LoginAuth');
     Route::get('/logout', [UserController::class, 'Logout'])->name('Logout');
+
+    // route for reset password
+    Route::get('/requestReset', [ResetPasswordController::class, 'ViewResetPasswd'])->name('RequestReset');
+    Route::post('/sendResetPasswd', [ResetPasswordController::class, 'SendResetPasswd'])->name('SendResetPasswd');
+    Route::get('/resetpasswdform/{token}', [ResetPasswordController::class, 'ResetPasswdForm'])->name('resetpasswdform.get');
+    Route::post('/resetpasswdform', [ResetPasswordController::class, 'SendResetForm'])->name('resetpasswdform');
 });
 
 //route for user

@@ -9,9 +9,9 @@
             <form action="loginAuth" method="POST">
                 @csrf
                 <div class="form-group position-relative has-icon-left mb-4">
-                    <input type="text" class="form-control form-control-xl" name="username" placeholder="Username" />
+                    <input type="email" class="form-control form-control-xl" name="email" autofocus placeholder="email@gmail.com" />
                     <div class="form-control-icon">
-                        <i class="bi bi-person"></i>
+                        <i class="bi bi-envelope"></i>
                     </div>
                 </div>
                 <div class="form-group position-relative has-icon-left mb-4">
@@ -33,7 +33,7 @@
             <div class="text-center mt-5 text-lg fs-4">
                 <p>
                     <a href="register" class="font-bold">Sign up / </a>
-                    <a class="font-bold" href="#">Forgot password?</a>
+                    <a class="font-bold" href="requestReset">Forgot password?</a>
                 </p>
             </div>
         </div>
