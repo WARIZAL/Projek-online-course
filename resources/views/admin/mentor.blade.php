@@ -37,14 +37,13 @@
                             <tr>
                                 <th class="text-center">No</th>
                                 <th class="text-center">Nama user</th>
-                                <th class="text-center">Kode mentor</th>
                                 <th class="text-center">Nama mentor</th>
                                 <th class="text-center">Bidang Keahlian</th>
                                 <th class="text-center">Tgl lahir</th>
                                 <th class="text-center">Foto</th>
                                 <th class="text-center">Gender</th>
                                 <th class="text-center">Alamat</th>
-                                <th class="text-center">Email</th>
+                                <th class="text-center">Github</th>
                                 <th class="text-center">Telepon</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
@@ -55,14 +54,13 @@
                             <tr class="text-center">
                                 <td><?= $i++ ?></td>
                                 <td>{{$val->username}}</td>
-                                <td>{{$val->kode_mentor}}</td>
                                 <td>{{$val->nama_mentor}}</td>
                                 <td>{{$val->nama_bidang}}</td>
                                 <td>{{$val->tgl_lhr}}</td>
                                 <td><img src="/foto/{{$val->foto}}" alt="404" width="65" height="70"></td>
                                 <td>{{$val->gender}}</td>
                                 <td>{{$val->alamat}}</td>
-                                <td>{{$val->email}}</td>
+                                <td>{{$val->github}}</td>
                                 <td>{{$val->telepon}}</td>
                                 <td>
                                     <div class="d-flex justify-content-center">
@@ -127,25 +125,19 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <h6>Kode mentor</h6>
-                            <input class="form-control" type="text" name="kode_mentor" placeholder="kode mentor" aria-label="default input example">
-                        </div>
-                        <div class="col-md-6 mb-3">
                             <h6>Nama mentor</h6>
                             <input class="form-control" type="text" name="nama_mentor" placeholder="nama mentor" aria-label="default input example">
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-6 mb-3">
                             <h6>Tgl lahir</h6>
                             <input class="form-control" type="date" name="tgl_lhr" placeholder="tanggal lahir" aria-label="default input example">
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6 mb-3">
                             <h6>Foto</h6>
                             <input class="form-control" type="file" name="foto" aria-label="default input example">
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-6 mb-3">
                             <h6>Gender</h6>
                             <div class="d-flex justify-content-around mt-3">
@@ -164,17 +156,19 @@
 
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6 mb-3">
                             <h6>Alamat</h6>
                             <input class="form-control" type="text" name="alamat" placeholder="alamat" aria-label="default input example">
                         </div>
+                        <div class="col-md-6 mb-3">
+                            <h6>Github</h6>
+                            <input class="form-control" type="text" name="github" placeholder="username github" aria-label="default input example">
+                        </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <h6>Email</h6>
-                            <input class="form-control" type="email" name="email" placeholder="email@gmail.com" aria-label="default input example">
-                        </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-12 mb-3">
                             <h6>Telepon</h6>
                             <input class="form-control" type="text" name="telepon" placeholder="telepon" aria-label="default input example">
                         </div>
@@ -226,25 +220,19 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <h6>Kode mentor</h6>
-                            <input class="form-control" type="text" name="kode_mentor" value="{{$row->kode_mentor}}" placeholder="kode mentor" aria-label="default input example">
-                        </div>
-                        <div class="col-md-6 mb-3">
                             <h6>Nama mentor</h6>
                             <input class="form-control" type="text" name="nama_mentor" value="{{$row->nama_mentor}}" placeholder="nama mentor" aria-label="default input example">
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-6 mb-3">
                             <h6>Tgl lahir</h6>
                             <input class="form-control" type="date" name="tgl_lhr" value="{{$row->tgl_lhr}}" placeholder="tanggal lahir" aria-label="default input example">
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6 mb-3">
                             <h6>Foto</h6>
                             <input class="form-control" type="file" name="foto" aria-label="default input example">
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-6 mb-3">
                             <h6>Gender</h6>
                             <div class="d-flex justify-content-around mt-3">
@@ -260,20 +248,21 @@
                                         Perempuan
                                     </label>
                                 </div>
-
                             </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <h6>Alamat</h6>
-                            <input class="form-control" type="text" name="alamat" value="{{$row->alamat}}" placeholder="alamat" aria-label="default input example">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <h6>Email</h6>
-                            <input class="form-control" type="email" name="email" value="{{$row->email}}" placeholder="email@gmail.com" aria-label="default input example">
+                            <h6>Alamat</h6>
+                            <input class="form-control" type="text" name="alamat" value="{{$row->alamat}}" placeholder="alamat" aria-label="default input example">
                         </div>
                         <div class="col-md-6 mb-3">
+                            <h6>Github</h6>
+                            <input class="form-control" type="text" name="github" placeholder="username github" aria-label="default input example">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
                             <h6>Telepon</h6>
                             <input class="form-control" type="text" name="telepon" value="{{$row->telepon}}" placeholder="telepon" aria-label="default input example">
                         </div>

@@ -12,13 +12,12 @@ class Member extends Model
     protected $primarykey = 'id_member';
     protected $fillable = [
         'id_user',
-        'kode_member',
         'nama_member',
         'tgl_lhr',
         'foto',
         'gender',
         'alamat',
-        'email',
+        'github',
         'telepon',
         'created_at',
         'updated_at'

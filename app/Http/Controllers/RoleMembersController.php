@@ -2,42 +2,53 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Bidang;
 use App\Models\Lembaga;
-use App\Models\Mentor;
+use App\Models\Member;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class MentorController extends Controller
+class RoleMembersController extends Controller
 {
-    public function GetAllMentor()
+
+    public function GetProfile()
     {
         $data = Lembaga::all();
         $dataUser = User::all();
-        $dataBidang = Bidang::all();
-        $dataMentor = DB::table('mentor')->join('user', 'user.id_user', '=', 'mentor.id_user')
-            ->join('bidang', 'bidang.id_bidang', '=', 'mentor.id_bidang')
-            ->get();
-        if (Auth::user()->role == 'admin') {
-            return view('admin.mentor', [
+        $dataMember = DB::table('member')->join('user', 'user.id_user', '=', 'member.id_user')->get();
+        if (Auth::user()->role == 'member') {
+            return view('members.profilemember', [
                 'instansi' => $data,
                 'users' => $dataUser,
-                'bidang' => $dataBidang,
-                'mentor' => $dataMentor,
-                'title' => 'data mentor'
+                'member' => $dataMember,
+                'title' => 'data member'
             ]);
         } else {
             print('akses di tolak');
         }
     }
-    public function AddMentor(Request $request)
+    public function LengkapiMember()
+    {
+        $data = Lembaga::all();
+        $dataUser = User::all();
+        $dataMember = DB::table('member')->join('user', 'user.id_user', '=', 'member.id_user')->get();
+        if (Auth::user()->role == 'member') {
+            return view('members.lengkapimember', [
+                'instansi' => $data,
+                'users' => $dataUser,
+                'member' => $dataMember,
+                'title' => 'data member'
+            ]);
+        } else {
+            print('akses di tolak');
+        }
+    }
+    public function AddMember(Request $request)
     {
         $validation = $request->validate([
             'id_user' => 'required',
-            'id_bidang' => 'required',
-            'nama_mentor' => 'required',
+            'nama_member' => 'required',
             'tgl_lhr' => 'required',
             'foto' => 'required|image|mimes:png,jpg,jpeg|max:1024',
             'gender' => 'required',
@@ -50,10 +61,9 @@ class MentorController extends Controller
         $request->foto->move(public_path('foto'), $imageName);
 
         if ($validation == true) {
-            $add = new Mentor([
+            $add = new Member([
                 'id_user' => $request->id_user,
-                'id_bidang' => $request->id_bidang,
-                'nama_mentor' => $request->nama_mentor,
+                'nama_member' => $request->nama_member,
                 'tgl_lhr' => $request->tgl_lhr,
                 'foto' => $imageName,
                 'gender' => $request->gender,
@@ -62,15 +72,14 @@ class MentorController extends Controller
                 'telepon' => $request->telepon
             ]);
             $add->save();
-            return redirect('mentor');
+            return redirect('profile');
         }
     }
-    public function UpdateMentorById(Request $request)
+    public function UpdtMember(Request $request)
     {
         $request->validate([
             'id_user' => 'required',
-            'id_bidang' => 'required',
-            'nama_mentor' => 'required',
+            'nama_member' => 'required',
             'tgl_lhr' => 'required',
             'foto' => 'required|image|mimes:png,jpg,jpeg|max:1024',
             'gender' => 'required',
@@ -83,8 +92,7 @@ class MentorController extends Controller
 
         $data = array(
             'id_user' => $request->post('id_user'),
-            'id_bidang' => $request->post('id_bidang'),
-            'nama_mentor' => $request->post('nama_mentor'),
+            'nama_member' => $request->post('nama_member'),
             'tgl_lhr' => $request->post('tgl_lhr'),
             'foto' => $imageName,
             'gender' => $request->post('gender'),
@@ -92,12 +100,7 @@ class MentorController extends Controller
             'github' => $request->post('github'),
             'telepon' => $request->post('telepon')
         );
-        Mentor::where('id_mentor', '=', $request->post('id_mentor'))->update($data);
-        return redirect('mentor');
-    }
-    public function DeleteMentorById($id)
-    {
-        Mentor::where('id_mentor', '=', $id)->delete();
-        return redirect('mentor');
+        Member::where('id_member', '=', $request->post('id_member'))->update($data);
+        return redirect('profile');
     }
 }

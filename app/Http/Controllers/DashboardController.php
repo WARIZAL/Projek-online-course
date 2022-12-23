@@ -18,12 +18,12 @@ class DashboardController extends Controller
                 'instansi' => $data
             ]);
         } elseif (Auth::user()->role == 'mentor') {
-            return view('mentor.dashboard', [
+            return view('mentors.dashboard', [
                 'title' => 'Dashboard',
                 'instansi' => $data
             ]);
         } elseif (Auth::user()->role == 'member') {
-            return view('mentor.dashboard', [
+            return view('members.dashboard', [
                 'title' => 'Dashboard',
                 'instansi' => $data
             ]);

@@ -16,13 +16,12 @@ return new class extends Migration
         Schema::create('member', function (Blueprint $table) {
             $table->id('id_member');
             $table->foreignId('id_user');
-            $table->string('kode_member', 10);
             $table->string('nama_member', 30);
             $table->date('tgl_lhr');
             $table->string('foto', 20);
             $table->enum('gender', ['laki-laki', 'perempuan']);
             $table->string('alamat', 70);
-            $table->string('email', 30);
+            $table->string('github', 30);
             $table->string('telepon', 14);
             $table->timestamps();
             $table->foreign('id_user')->references('id_user')->on('user')->cascadeOnUpdate()->cascadeOnDelete();

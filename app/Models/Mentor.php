@@ -13,13 +13,12 @@ class Mentor extends Model
     protected $fillable = [
         'id_user',
         'id_bidang',
-        'kode_mentor',
         'nama_mentor',
         'tgl_lhr',
         'foto',
         'gender',
         'alamat',
-        'email',
+        'github',
         'telepon',
         'created_at',
         'updated_at'

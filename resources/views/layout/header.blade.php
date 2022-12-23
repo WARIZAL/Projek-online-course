@@ -21,9 +21,6 @@
                             @foreach($lembaga as $l)
                             <div class="overflow-hidden">
                                 <div class="row">
-                                    <div class="col-3">
-                                        <img src="/logo/{{$l->logo}}" alt="" width="35" height="45" class="rounded-circle">
-                                    </div>
                                     <div class="col-4">
                                         <h3>{{$l->nama}}</h3>
                                     </div>

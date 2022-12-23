@@ -31,13 +31,12 @@ class MemberController extends Controller
     {
         $validation = $request->validate([
             'id_user' => 'required',
-            'kode_member' => 'required',
             'nama_member' => 'required',
             'tgl_lhr' => 'required',
             'foto' => 'required|image|mimes:png,jpg,jpeg|max:1024',
             'gender' => 'required',
             'alamat' => 'required',
-            'email' => 'required',
+            'github' => 'required',
             'telepon' => 'required'
         ]);
         // dd($validation);
@@ -48,13 +47,12 @@ class MemberController extends Controller
         if ($validation == true) {
             $data = new Member([
                 'id_user' => $request->id_user,
-                'kode_member' => $request->kode_member,
                 'nama_member' => $request->nama_member,
                 'tgl_lhr' => $request->tgl_lhr,
                 'foto' => $imageName,
                 'gender' => $request->gender,
                 'alamat' => $request->alamat,
-                'email' => $request->email,
+                'github' => $request->github,
                 'telepon' => $request->telepon
             ]);
             $data->save();
@@ -65,13 +63,12 @@ class MemberController extends Controller
     {
         $request->validate([
             'id_user' => 'required',
-            'kode_member' => 'required',
             'nama_member' => 'required',
             'tgl_lhr' => 'required',
             'foto' => 'required|image|mimes:png,jpg,jpeg|max:1024',
             'gender' => 'required',
             'alamat' => 'required',
-            'email' => 'required',
+            'github' => 'required',
             'telepon' => 'required'
         ]);
         // dd($data);
@@ -81,13 +78,12 @@ class MemberController extends Controller
 
         $data = array(
             'id_user' => $request->post('id_user'),
-            'kode_member' => $request->post('kode_member'),
             'nama_member' => $request->post('nama_member'),
             'tgl_lhr' => $request->post('tgl_lhr'),
             'foto' => $imageName,
             'gender' => $request->post('gender'),
             'alamat' => $request->post('alamat'),
-            'email' => $request->post('email'),
+            'github' => $request->post('github'),
             'telepon' => $request->post('telepon')
         );
         Member::where('id_member', '=', $request->post('id_member'))->update($data);

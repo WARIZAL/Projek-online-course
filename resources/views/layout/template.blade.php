@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{$title}}</title>
+    <title>{{$title ?? ""}}</title>
 
     <link rel="stylesheet" href="{{asset('assets')}}/extensions/choices.js/public/assets/styles/choices.css" />
 
@@ -151,6 +151,18 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
+                            <a href="lengkapipp" class='sidebar-link'>
+                                <i class="fas fa-user-plus"></i>
+                                <span>Lengkapi profile</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="profile" class='sidebar-link'>
+                                <i class="fas fa-user-plus"></i>
+                                <span>Profile</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
                             <a href="logout" class='sidebar-link'>
                                 <i class="fas fa-sign-out-alt"></i>
                                 <span>Logout</span>
@@ -159,6 +171,26 @@
                     </ul>
                     @elseif(Auth::user()->role=='member')
                     <ul class="menu">
+                        <li class="sidebar-title">Menu</li>
+                        <!-- <li class="sidebar-item active "> -->
+                        <li class="sidebar-item">
+                            <a href="dashboard" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="lengkapimember" class='sidebar-link'>
+                                <i class="fas fa-user-plus"></i>
+                                <span>Lengkapi profile</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="profilemember" class='sidebar-link'>
+                                <i class="fas fa-user-plus"></i>
+                                <span>Profile</span>
+                            </a>
+                        </li>
                         <li class="sidebar-item">
                             <a href="logout" class='sidebar-link'>
                                 <i class="fas fa-sign-out-alt"></i>

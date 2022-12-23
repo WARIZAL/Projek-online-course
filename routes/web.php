@@ -10,6 +10,8 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MentorController;
 use App\Http\Controllers\ModulController;
 use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\RoleMembersController;
+use App\Http\Controllers\RolleMentorController;
 use App\Http\Controllers\UserController;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\Facades\Route;
@@ -24,13 +26,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::prefix('home')->group(function () {
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 Route::get('/course', [HomeController::class, 'course'])->name('course');
 Route::get('/kontak', [HomeController::class, 'kontak'])->name('kontak');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
-// });
 
 
 Route::name('auth')->group(function () {
@@ -93,7 +93,7 @@ Route::prefix('member')->group(function () {
     Route::get('/deleteMemberById/{id}', [MemberController::class, 'DeleteMemberById'])->name('member.DeleteMemberById');
 });
 
-//route for Mentor
+//route for table Mentor
 Route::prefix('mentor')->group(function () {
     Route::get('', [MentorController::class, 'GetAllMentor'])->name('GetAllMentor');
     Route::post('/addMentor', [MentorController::class, 'AddMentor'])->name('mentor.AddMentor');
@@ -107,4 +107,20 @@ Route::prefix('modul')->group(function () {
     Route::post('/addModul', [ModulController::class, 'AddModul'])->name('modul.AddModul');
     Route::post('/updateModulById', [ModulController::class, 'UpdateModulById'])->name('modul.UpdateModulById');
     Route::get('/deleteModulById/{id}', [ModulController::class, 'DeleteModulById'])->name('modul.DeleteModulById');
+});
+
+// route for rolle mentor
+Route::name('mentors')->group(function () {
+    Route::get('/profile', [RolleMentorController::class, 'GetProfile'])->name('profile');
+    Route::get('/lengkapipp', [RolleMentorController::class, 'LengkapiPP'])->name('lengkapipp');
+    Route::post('/addpp', [RolleMentorController::class, 'AddPP'])->name('addpp');
+    Route::post('/updtpp', [RolleMentorController::class, 'UpdtPP'])->name('updtpp');
+});
+
+// route for rolle member
+Route::name('members')->group(function () {
+    Route::get('/profilemember', [RoleMembersController::class, 'GetProfile'])->name('profilemember');
+    Route::get('/lengkapimember', [RoleMembersController::class, 'LengkapiMember'])->name('lengkapimember');
+    Route::post('/addmember', [RoleMembersController::class, 'AddMember'])->name('addmember');
+    Route::post('/updtmember', [RoleMembersController::class, 'UpdtMember'])->name('updtmember');
 });
