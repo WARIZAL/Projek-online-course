@@ -62,7 +62,7 @@ class ModulController extends Controller
                 'penulis' => $request->penulis
             ]);
             $add->save();
-            return redirect('modul');
+            return redirect('modul')->with('success', 'data berhasil di tambahkan !');
         }
         //id_kategori_modul	id_kelas	nama_modul	jml_modul	tgl_terbit	penulis
     }
@@ -86,12 +86,12 @@ class ModulController extends Controller
                 'penulis' => $request->post('penulis')
             );
             Modul::where('id_modul', '=', $request->post('id_modul'))->update($edit);
-            return redirect('modul');
+            return redirect('modul')->with('success', 'data berhasil di edit !');
         }
     }
     public function DeleteModulById($id)
     {
         Modul::where('id_modul', $id)->delete();
-        return redirect('modul');
+        return redirect('modul')->with('success', 'data berhasil di hapus !');
     }
 }

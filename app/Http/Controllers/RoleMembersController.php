@@ -72,7 +72,7 @@ class RoleMembersController extends Controller
                 'telepon' => $request->telepon
             ]);
             $add->save();
-            return redirect('profile');
+            return redirect('profilemember')->with('success', 'data berhasil di tambahkan !');
         }
     }
     public function UpdtMember(Request $request)
@@ -101,6 +101,6 @@ class RoleMembersController extends Controller
             'telepon' => $request->post('telepon')
         );
         Member::where('id_member', '=', $request->post('id_member'))->update($data);
-        return redirect('profile');
+        return redirect('profilemember')->with('success', 'data berhasil di edit !');
     }
 }

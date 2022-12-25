@@ -40,7 +40,7 @@ class KtgrModulController extends Controller
                 'jenis_modul' => $request->jenis_modul
             ]);
             $add->save();
-            return redirect('ktgrModul');
+            return redirect('ktgrModul')->with('success', 'data berhasil di tambahkan !');
         }
     }
     public function UpdateByIdKtgrModul(Request $request)
@@ -49,11 +49,11 @@ class KtgrModulController extends Controller
             'jenis_modul' => $request->post('jenis_modul')
         );
         KategoriModul::where('id_kategori_modul', '=', $request->post('id_kategori_modul'))->update($edit);
-        return redirect('ktgrModul');
+        return redirect('ktgrModul')->with('success', 'data berhasil di edit !');
     }
     public function DeleteByIdKtgrModul($id)
     {
         KategoriModul::where('id_kategori_modul', '=', $id)->delete();
-        return redirect('ktgrModul');
+        return redirect('ktgrModul')->with('success', 'data berhasil di hapus !');
     }
 }

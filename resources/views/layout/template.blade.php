@@ -109,6 +109,12 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
+                            <a href="transactionKelas" class='sidebar-link'>
+                                <i class="fas fa-file-alt"></i>
+                                <span>Transaksi kelas</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
                             <a href="ktgrModul" class='sidebar-link'>
                                 <i class="fas fa-book"></i>
                                 <span>Kategori modul</span>
@@ -189,6 +195,12 @@
                             <a href="profilemember" class='sidebar-link'>
                                 <i class="fas fa-user-plus"></i>
                                 <span>Profile</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="allClass" class='sidebar-link'>
+                                <i class="fas fa-building"></i>
+                                <span>All kelas</span>
                             </a>
                         </li>
                         <li class="sidebar-item">

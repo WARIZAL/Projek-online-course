@@ -37,7 +37,7 @@ class LembagaController extends Controller
             'tentang' => $request->tentang,
         ]);
         $datas->save();
-        return redirect('instansi');
+        return redirect('instansi')->with('success', 'data berhasil di tambahkan !');
     }
     public function UpdateById(Request $request)
     {
@@ -54,11 +54,11 @@ class LembagaController extends Controller
             'tentang' => $request->post('tentang'),
         );
         Lembaga::where('id_lembaga', '=', $request->post('id_lembaga'))->update($edit);
-        return redirect('instansi');
+        return redirect('instansi')->with('success', 'data berhasil di edit !');
     }
     public function DeleteById($id)
     {
         Lembaga::where('id_lembaga', '=', $id)->delete();
-        return redirect('instansi');
+        return redirect('instansi')->with('success', 'data berhasil di hapus !');
     }
 }

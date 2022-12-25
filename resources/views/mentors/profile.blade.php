@@ -8,8 +8,7 @@
         <div class="form">
             <div class="modal-body">
                 @foreach($mentor as $mtr)
-                @foreach($users as $us)
-                @if(Auth::user()->id_user == $us->id_user)
+                @if(Auth::user()->id_user == $mtr->id_user)
                 <div class="row">
                     <div class="col-md-5 mb-3 mx-auto">
                         <img src="/foto/{{$mtr->foto}}" alt="404" width="200" height="200" class="rounded-circle">
@@ -86,7 +85,6 @@
                     </button>
                 </div>
                 @endif
-                @endforeach
                 @endforeach
             </div>
         </div>

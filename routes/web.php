@@ -12,6 +12,7 @@ use App\Http\Controllers\ModulController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\RoleMembersController;
 use App\Http\Controllers\RolleMentorController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserController;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\Facades\Route;
@@ -109,6 +110,13 @@ Route::prefix('modul')->group(function () {
     Route::get('/deleteModulById/{id}', [ModulController::class, 'DeleteModulById'])->name('modul.DeleteModulById');
 });
 
+// rote for transaction
+Route::prefix('transactionKelas')->group(function () {
+    Route::get('/', [TransaksiController::class, 'GetTransaction'])->name('transactionKelas');
+    Route::post('/updtTransaksi', [TransaksiController::class, 'UpdtTransaksi'])->name('updtTransaksi');
+    Route::get('/deleteTransaksi/{id}', [TransaksiController::class, 'DeleteTransaksi'])->name('deleteTransaksi');
+});
+
 // route for rolle mentor
 Route::name('mentors')->group(function () {
     Route::get('/profile', [RolleMentorController::class, 'GetProfile'])->name('profile');
@@ -123,4 +131,8 @@ Route::name('members')->group(function () {
     Route::get('/lengkapimember', [RoleMembersController::class, 'LengkapiMember'])->name('lengkapimember');
     Route::post('/addmember', [RoleMembersController::class, 'AddMember'])->name('addmember');
     Route::post('/updtmember', [RoleMembersController::class, 'UpdtMember'])->name('updtmember');
+
+
+    Route::get('/allClass', [KelasController::class, 'GetAllKelas'])->name('GetAllKelas');
+    Route::post('/addTransaksi', [KelasController::class, 'AddTransaksi'])->name('kelas.AddTransaksi');
 });

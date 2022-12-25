@@ -35,7 +35,7 @@ class BidangController extends Controller
                 'nama_bidang' => $request->nama_bidang
             ]);
             $add->save();
-            return redirect('bidang');
+            return redirect('bidang')->with('success', 'data berhasil di tambahkan !');
         }
     }
     public function UpdateByIdBidang(Request $request)
@@ -44,11 +44,11 @@ class BidangController extends Controller
             'nama_bidang' => $request->post('nama_bidang')
         );
         Bidang::where('id_bidang', '=', $request->post('id_bidang'))->update($update);
-        return redirect('bidang');
+        return redirect('bidang')->with('success', 'data berhasil di edit !');
     }
     public function DeleteByIdBidang($id)
     {
         Bidang::where('id_bidang', '=', $id)->delete();
-        return redirect('bidang');
+        return redirect('bidang')->with('success', 'data berhasil di hapus !');
     }
 }

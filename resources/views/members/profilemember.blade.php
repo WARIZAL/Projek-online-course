@@ -8,8 +8,7 @@
         <div class="form">
             <div class="modal-body">
                 @foreach($member as $mbr)
-                @foreach($users as $us)
-                @if(Auth::user()->id_user == $us->id_user)
+                @if(Auth::user()->id_user == $mbr->id_user)
                 <div class="row">
                     <div class="col-md-5 mb-3 mx-auto">
                         <img src="/foto/{{$mbr->foto}}" alt="404" width="200" height="200" class="rounded-circle">
@@ -25,7 +24,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4 mb-3">
-                        <h6>Nama mentor</h6>
+                        <h6>Nama member</h6>
                     </div>
                     <div class="col-md-8 mb-3">
                         <h6>: {{$mbr->nama_member}}</h6>
@@ -79,7 +78,6 @@
                 </div>
                 @endif
                 @endforeach
-                @endforeach
             </div>
         </div>
     </div>
@@ -94,15 +92,15 @@
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Edit data</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="updtpp" method="post" enctype="multipart/form-data">
+            <form action="updtmember" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     @csrf
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <input type="hidden" name="id_member" value="{{$row->id_member}}" class="form-control">
-                            @foreach($users as $mtr)
-                            @if(Auth::user()->id_user == $mtr->id_user)
-                            <input type="hidden" class="form-control" name="id_user" value="{{$mtr->id_user}}">
+                            @foreach($users as $us)
+                            @if(Auth::user()->id_user == $us->id_user)
+                            <input type="hidden" class="form-control" name="id_user" value="{{$us->id_user}}">
                             @endif
                             @endforeach
                             <h6>Nama member</h6>

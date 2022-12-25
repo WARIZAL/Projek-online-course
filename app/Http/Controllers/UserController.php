@@ -51,7 +51,7 @@ class UserController extends Controller
             // 'role' => $request->role,
         ]);
         $user->save();
-        return redirect('login')->with('success', 'Registration success. Please login!');
+        return redirect('login')->with('success', 'proses registrasi telah berhasil silahkan anda login!');
     }
     public function login()
     {
@@ -94,13 +94,13 @@ class UserController extends Controller
                 'role' => $request->post('role')
             );
             User::where('id_user', '=', $request->post('id_user'))->update($edit);
-            return redirect('user');
+            return redirect('user')->with('success', 'data berhasil di edit !');
         }
     }
     public function DeleteByIdUser($id)
     {
         User::where('id_user', '=', $id)->delete();
-        return redirect('user');
+        return redirect('user')->with('success', 'data berhasil di hapus !');
     }
     public function Logout()
     {

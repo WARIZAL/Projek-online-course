@@ -5,14 +5,14 @@
         <div class="card-header">
             <h4 class="card-title text-center">Lengkapi profile</h4>
         </div>
-        <form action="addpp" method="post" enctype="multipart/form-data">
+        <form action="addmember" method="post" enctype="multipart/form-data">
             <div class="modal-body">
                 @csrf
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        @foreach($users as $mbr)
-                        @if(Auth::user()->id_user == $mbr->id_user)
-                        <input type="hidden" class="form-control" name="id_user" value="{{$mbr->id_user}}">
+                        @foreach($users as $us)
+                        @if(Auth::user()->id_user == $us->id_user)
+                        <input type="hidden" class="form-control" name="id_user" value="{{$us->id_user}}">
                         @endif
                         @endforeach
                         <h6>Nama member</h6>

@@ -56,7 +56,7 @@ class MemberController extends Controller
                 'telepon' => $request->telepon
             ]);
             $data->save();
-            return redirect('member');
+            return redirect('member')->with('success', 'data berhasil di tambahkan !');
         }
     }
     public function UpdateMemberById(Request $request)
@@ -87,11 +87,11 @@ class MemberController extends Controller
             'telepon' => $request->post('telepon')
         );
         Member::where('id_member', '=', $request->post('id_member'))->update($data);
-        return redirect('member');
+        return redirect('member')->with('success', 'data berhasil di edit !');
     }
     public function DeleteMemberById($id)
     {
         Member::where('id_member', $id)->delete();
-        return redirect('member');
+        return redirect('member')->with('success', 'data berhasil di hapus !');
     }
 }

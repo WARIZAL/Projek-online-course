@@ -23,6 +23,16 @@
         </div>
     </div>
     <section class="section">
+        <div>
+            @if(session('success'))
+            <p class="alert alert-success">{{ session('success') }}</p>
+            @endif
+            @if($errors->any())
+            @foreach($errors->all() as $err)
+            <p class="alert alert-danger">{{ $err }}</p>
+            @endforeach
+            @endif
+        </div>
         <div class="card">
             <div class="card-body">
                 <!-- Button trigger modal -->

@@ -6,16 +6,24 @@
             <p class="auth-subtitle mb-5  text-center">
                 Log in with your data that you entered during registration.
             </p>
+            @if(session('success'))
+            <p class="alert alert-success">{{ session('success') }}</p>
+            @endif
+            @if($errors->any())
+            @foreach($errors->all() as $err)
+            <p class="alert alert-danger">{{ $err }}</p>
+            @endforeach
+            @endif
             <form action="loginAuth" method="POST">
                 @csrf
                 <div class="form-group position-relative has-icon-left mb-4">
-                    <input type="email" class="form-control form-control-xl" name="email" autofocus placeholder="email@gmail.com" />
+                    <input type="email" class="form-control form-control" name="email" autofocus placeholder="email@gmail.com" />
                     <div class="form-control-icon">
                         <i class="bi bi-envelope"></i>
                     </div>
                 </div>
                 <div class="form-group position-relative has-icon-left mb-4">
-                    <input type="password" class="form-control form-control-xl" name="password" placeholder="Password" />
+                    <input type="password" class="form-control form-control" name="password" placeholder="Password" />
                     <div class="form-control-icon">
                         <i class="bi bi-shield-lock"></i>
                     </div>

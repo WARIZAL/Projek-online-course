@@ -15,15 +15,12 @@ return new class extends Migration
     {
         Schema::create('kelas', function (Blueprint $table) {
             $table->id('id_kelas');
-            $table->foreignId('id_member');
             $table->foreignId('id_bidang');
             $table->enum('jenis_kelas', ['free', 'premium', 'bootcamp']);
             $table->double('harga_kelas');
             $table->integer('lama_course');
-            $table->date('tgl_bayar');
             $table->date('tanggal_berakhir');
             $table->timestamps();
-            $table->foreign('id_member')->references('id_member')->on('member')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('id_bidang')->references('id_bidang')->on('bidang')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }

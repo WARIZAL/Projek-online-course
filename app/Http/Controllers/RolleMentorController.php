@@ -83,7 +83,7 @@ class RolleMentorController extends Controller
                 'telepon' => $request->telepon
             ]);
             $add->save();
-            return redirect('profile');
+            return redirect('profile')->with('success', 'data berhasil di tambahkan !');
         }
     }
     public function UpdtPP(Request $request)
@@ -114,6 +114,6 @@ class RolleMentorController extends Controller
             'telepon' => $request->post('telepon')
         );
         Mentor::where('id_mentor', '=', $request->post('id_mentor'))->update($data);
-        return redirect('profile');
+        return redirect('profile')->with('success', 'data berhasil di edit !');
     }
 }

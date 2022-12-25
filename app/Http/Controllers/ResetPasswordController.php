@@ -70,7 +70,7 @@ class ResetPasswordController extends Controller
             return back()->withInput()->with('error', 'Invalid token!');
         }
         User::where('email', $request->email)->update(['password' => Hash::make($request->password)]);
-        return redirect('/login');
+        return redirect('/login')->with('success', 'password berhasil di reset !');
 
         // DB::table('reset_password')->where(['email' => $request->email])->delete();
         // return redirect('/login')->with('message', 'Your password has been changed!');

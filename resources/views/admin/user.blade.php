@@ -23,6 +23,16 @@
         </div>
     </div>
     <section class="section">
+        <div>
+            @if(session('success'))
+            <p class="alert alert-success">{{ session('success') }}</p>
+            @endif
+            @if($errors->any())
+            @foreach($errors->all() as $err)
+            <p class="alert alert-danger">{{ $err }}</p>
+            @endforeach
+            @endif
+        </div>
         <div class="card">
             <div class="card-body">
                 <!-- Button trigger modal -->
@@ -37,6 +47,7 @@
                             <tr>
                                 <th class="text-center">No</th>
                                 <th class="text-center">Username</th>
+                                <th class="text-center">Email</th>
                                 <th class="text-center">Level</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
@@ -47,6 +58,7 @@
                             <tr class="text-center">
                                 <td><?= $i++ ?></td>
                                 <td>{{$val->username}}</td>
+                                <td>{{$val->email}}</td>
                                 <td>{{$val->role}}</td>
                                 <td class="d-flex justify-content-center">
                                     <!-- <div class="d-flex justify-content-center"> -->

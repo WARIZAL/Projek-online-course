@@ -62,7 +62,7 @@ class MentorController extends Controller
                 'telepon' => $request->telepon
             ]);
             $add->save();
-            return redirect('mentor');
+            return redirect('mentor')->with('success', 'data berhasil di tambahkan !');
         }
     }
     public function UpdateMentorById(Request $request)
@@ -93,11 +93,11 @@ class MentorController extends Controller
             'telepon' => $request->post('telepon')
         );
         Mentor::where('id_mentor', '=', $request->post('id_mentor'))->update($data);
-        return redirect('mentor');
+        return redirect('mentor')->with('success', 'data berhasil di edit !');
     }
     public function DeleteMentorById($id)
     {
         Mentor::where('id_mentor', '=', $id)->delete();
-        return redirect('mentor');
+        return redirect('mentor')->with('success', 'data berhasil di hapus !');
     }
 }
