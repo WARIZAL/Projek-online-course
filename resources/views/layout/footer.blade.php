@@ -26,6 +26,7 @@
 <script src="{{asset('assets')}}/extensions/apexcharts/apexcharts.min.js"></script>
 <script src="{{asset('assets')}}/js/pages/dashboard.js"></script>
 
+<script src="{{asset('assets')}}/js/pages/horizontal-layout.js"></script>
 <!-- load datatable -->
 <!-- <script src="{{asset('assets')}}/extensions/simple-datatables/umd/simple-datatables.js"></script>
     <script src="{{asset('assets')}}/js/pages/simple-datatables.js"></script> -->

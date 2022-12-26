@@ -1,77 +1,5 @@
 @extends('layout.template')
 @section('content')
-<header class="mb-3">
-    <a href="#" class="burger-btn d-block d-xl-none">
-        <i class="bi justify fs-3"></i>
-    </a>
-</header>
-<div class="page-heading">
-    <div class="page-title">
-        <div class="row">
-            <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Kelas</h3>
-                <p class="text-subtitle text-muted">Selamat datang kembali {{Auth::user()->username}}</p>
-            </div>
-            <div class="col-12 col-md-6 order-md-2 order-first">
-                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">DataTable</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
-    <section class="section">
-        <div>
-            @if(session('success'))
-            <p class="alert alert-success">{{ session('success') }}</p>
-            @endif
-            @if($errors->any())
-            @foreach($errors->all() as $err)
-            <p class="alert alert-danger">{{ $err }}</p>
-            @endforeach
-            @endif
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-striped" id="table1">
-                        <thead>
-                            <tr>
-                                <th class="text-center">No</th>
-                                <th class="text-center">Nama Bidang</th>
-                                <th class="text-center">Jenis Kelas</th>
-                                <th class="text-center">Harga Kelas</th>
-                                <th class="text-center">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $i = 1; ?>
-                            @foreach($joinKelas as $val)
-                            <tr class="text-center">
-                                <td><?= $i++ ?></td>
-                                <td>{{$val->nama_bidang}}</td>
-                                <td>{{$val->jenis_kelas}}</td>
-                                <td>{{$val->harga_kelas}}</td>
-                                <td>
-                                    <div class="d-flex justify-content-center">
-                                        <div class="col-md-6">
-                                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#beliKelas{{$val->id_kelas}}">
-                                                <i class="fas fa-plus"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
 
 <!-- modal beli kelas -->
 @foreach($joinKelas as $row)
@@ -123,4 +51,70 @@
     </div>
 </div>
 @endforeach
+<!--read data all kelas-->
+<div class="row justify-content-center">
+    <div class="col-xl-5">
+        <div class="section_tittle text-center">
+            <h2>{{$title}}</h2>
+        </div>
+    </div>
+</div>
+<div class="row match-height mt-2">
+    <!-- alert -->
+    <div>
+        @if(session('success'))
+        <p class="alert alert-success">{{ session('success') }}</p>
+        @endif
+        @if($errors->any())
+        @foreach($errors->all() as $err)
+        <p class="alert alert-danger">{{ $err }}</p>
+        @endforeach
+        @endif
+    </div>
+    @foreach($joinKelas as $val)
+    <div class="col-md-4 col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">{{$val->nama_bidang}}</h4>
+            </div>
+            <div class="card-content">
+                <div class="card-body">
+                    <form class="form form-horizontal">
+                        <div class="form-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h6>Jenis kelas</h6>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    <p>: {{$val->jenis_kelas}}</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <h6>Harga kelas</h6>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    <p>: {{$val->harga_kelas}}</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <h6>Masa aktif kelas</h6>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    <p>: {{$val->lama_course}}</p>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <div class="col-md-2">
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#beliKelas{{$val->id_kelas}}">
+                                            <i class="fas fa-plus"></i>
+                                            Beli
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endforeach
+</div>
 @endsection
