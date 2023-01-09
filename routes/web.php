@@ -1,14 +1,19 @@
 <?php
 
+use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\BidangController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KategoriKegiatanController;
+use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\KtgrModulController;
+use App\Http\Controllers\LearnKelas;
 use App\Http\Controllers\LembagaController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MentorController;
 use App\Http\Controllers\ModulController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\RoleMembersController;
 use App\Http\Controllers\RolleMentorController;
@@ -70,6 +75,22 @@ Route::prefix('bidang')->group(function () {
     Route::get('/deleteByIdBidang/{id}', [BidangController::class, 'DeleteByIdBidang'])->name('bidang.DeleteByIdBidang');
 });
 
+//route for kategori kegiatan
+Route::prefix('kategoriKegiatan')->group(function () {
+    Route::get('/', [KategoriKegiatanController::class, 'GetKategoriKeg'])->name('GetKategoriKeg');
+    Route::post('/addKategoriKeg', [KategoriKegiatanController::class, 'AddKategoriKeg'])->name('AddKategoriKeg');
+    Route::post('/updtKategoriKeg', [KategoriKegiatanController::class, 'UpdtKategoriKeg'])->name('UpdtKategoriKeg');
+    Route::get('/deleteKategoriKeg/{id}', [KategoriKegiatanController::class, 'DeleteKategoriKeg'])->name('DeleteKategoriKeg');
+});
+
+//route for kegiatan
+Route::prefix('kegiatan')->group(function () {
+    Route::get('/', [KegiatanController::class, 'GetKegiatan'])->name('GetKegiatan');
+    Route::post('/addKegiatan', [KegiatanController::class, 'AddKegiatan'])->name('AddKegiatan');
+    Route::post('/updtKegiatan', [KegiatanController::class, 'UpdtKegiatan'])->name('UpdtKegiatan');
+    Route::get('/deleteKegiatan/{id}', [KegiatanController::class, 'DeleteKegiatan'])->name('DeleteKegiatan');
+});
+
 //route for Kelas
 Route::prefix('kelas')->group(function () {
     Route::get('/', [KelasController::class, 'GetAllKelas'])->name('GetAllKelas');
@@ -91,6 +112,7 @@ Route::prefix('member')->group(function () {
     Route::get('/', [MemberController::class, 'GetAllMember'])->name('GetAllMember');
     Route::post('/addMember', [MemberController::class, 'AddMember'])->name('member.AddMember');
     Route::post('/updateMemberById', [MemberController::class, 'UpdateMemberById'])->name('member.UpdateMemberById');
+    Route::post('/validMember', [MemberController::class, 'ValidMember'])->name('validMember');
     Route::get('/deleteMemberById/{id}', [MemberController::class, 'DeleteMemberById'])->name('member.DeleteMemberById');
 });
 
@@ -99,6 +121,7 @@ Route::prefix('mentor')->group(function () {
     Route::get('', [MentorController::class, 'GetAllMentor'])->name('GetAllMentor');
     Route::post('/addMentor', [MentorController::class, 'AddMentor'])->name('mentor.AddMentor');
     Route::post('/updateMentorById', [MentorController::class, 'UpdateMentorById'])->name('mentor.UpdateMentorById');
+    Route::post('/validMentor', [MentorController::class, 'ValidMentor'])->name('validMentor');
     Route::get('/deleteMentorById/{id}', [MentorController::class, 'DeleteMentorById'])->name('mentor.DeleteMentorById');
 });
 
@@ -116,6 +139,24 @@ Route::prefix('transactionKelas')->group(function () {
     Route::post('/updtTransaksi', [TransaksiController::class, 'UpdtTransaksi'])->name('updtTransaksi');
     Route::get('/deleteTransaksi/{id}', [TransaksiController::class, 'DeleteTransaksi'])->name('deleteTransaksi');
 });
+
+// route for table question
+Route::prefix('question')->group(function () {
+    Route::get('/', [QuestionController::class, 'GetQuestion'])->name('question');
+    Route::post('/addQuestion', [QuestionController::class, 'AddQuestion'])->name('addquestion');
+    Route::post('/updtQuestion', [QuestionController::class, 'UpdtQuestion'])->name('updtquestion');
+    Route::get('/deleteQuestion/{id}', [QuestionController::class, 'DeleteQuestion'])->name('deletequestion');
+});
+
+
+// route for table answer
+Route::prefix('answer')->group(function () {
+    Route::get('/', [AnswerController::class, 'GetAnswer'])->name('answer');
+    Route::post('/addAnswer', [AnswerController::class, 'AddAnswer'])->name('addanswer');
+    Route::post('/updtAnswer', [AnswerController::class, 'UpdtAnswer'])->name('updtanswer');
+    Route::get('/deleteAnswer/{id}', [AnswerController::class, 'DeleteAnswer'])->name('deleteanswer');
+});
+
 
 // route for rolle mentor
 Route::name('mentors')->group(function () {
@@ -135,4 +176,6 @@ Route::name('members')->group(function () {
 
     Route::get('/allClass', [KelasController::class, 'GetAllKelas'])->name('GetAllKelas');
     Route::post('/addTransaksi', [KelasController::class, 'AddTransaksi'])->name('kelas.AddTransaksi');
+
+    Route::get('/kelas_member', [LearnKelas::class, 'ReadKelas'])->name('kelas_member');
 });

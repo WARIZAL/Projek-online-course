@@ -127,6 +127,30 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
+                            <a href="kategoriKegiatan" class='sidebar-link'>
+                                <i class="fas fa-weight"></i>
+                                <span>Kategori kegiatan</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="kegiatan" class='sidebar-link'>
+                                <i class="fas fa-walking"></i>
+                                <span>Kegiatan</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="question" class='sidebar-link'>
+                                <i class="fas fa-file-contract"></i>
+                                <span>Question</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="answer" class='sidebar-link'>
+                                <i class="fas fa-file-signature"></i>
+                                <span>Answers</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
                             <a href="logout" class='sidebar-link'>
                                 <i class="fas fa-sign-out-alt"></i>
                                 <span>Logout</span>
@@ -154,6 +178,18 @@
                             <a href="modul" class='sidebar-link'>
                                 <i class="fas fa-swatchbook"></i>
                                 <span>Moduls</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="answer" class='sidebar-link'>
+                                <i class="fas fa-file-signature"></i>
+                                <span>Answers</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="question" class='sidebar-link'>
+                                <i class="fas fa-file-contract"></i>
+                                <span>Question</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -201,6 +237,12 @@
                             <a href="allClass" class='sidebar-link'>
                                 <i class="fas fa-building"></i>
                                 <span>All kelas</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="kelas_member" class='sidebar-link'>
+                                <i class="fas fa-home"></i>
+                                <span>Kelas anda</span>
                             </a>
                         </li>
                         <li class="sidebar-item">

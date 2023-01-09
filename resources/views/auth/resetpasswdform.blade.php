@@ -4,7 +4,7 @@
         <div class="col mt-3">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Register akun</h4>
+                    <h4 class="card-title">Reset password</h4>
                 </div>
                 <form action="/resetpasswdform" method="POST">
                     @csrf
